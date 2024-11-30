@@ -23,6 +23,7 @@
                 Каждый день миллионы игроков по всему миру вступают в командную битву 5 на 5
                 в роли одного из более чем сотни героев. Dota — глубочайшая многопользовательская стратегия всех времён,
                 в которой всегда найдётся место новой стратегии или тактике. Она совершенно бесплатна, и это не поменяется — начинайте защищать своего Древнего уже сейчас.
+                <div id="vk_auth"></div>
               </div>
               <div class="buttons_group">
                 <button class="button__link" onClick="window.open('https://www.dota2.com/', '_blank');" type="button"> Официальный сайт </button>
@@ -49,7 +50,7 @@
           const oneTap = new VKID.OneTap();
     
           oneTap.render({
-            container: document.currentScript.parentElement,
+            container: document.getElementById('vk_auth'),
             showAlternativeLogin: true
           })
           .on(VKID.WidgetEvents.ERROR, vkidOnError)
