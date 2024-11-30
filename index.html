@@ -40,43 +40,41 @@
 
         document.addEventListener('DOMContentLoaded', function() { 
           if ('VKIDSDK' in window) {
-          const VKID = window.VKIDSDK;
+      const VKID = window.VKIDSDK;
+
+      VKID.Config.init({
+        app: 52750377,
+        redirectUrl: 'https://stoocom.github.io/',
+        responseMode: VKID.ConfigResponseMode.Callback,
+        source: VKID.ConfigSource.LOWCODE,
+      });
+
+      const oAuth = new VKID.OAuthList();
+
+      oAuth.render({
+        container: document.currentScript.parentElement,
+        oauthList: [
+          'vkid'
+        ]
+      })
+      .on(VKID.WidgetEvents.ERROR, vkidOnError)
+      .on(VKID.OAuthListInternalEvents.LOGIN_SUCCESS, function (payload) {
+        const code = payload.code;
+        const deviceId = payload.device_id;
+
+        VKID.Auth.exchangeCode(code, deviceId)
+          .then(vkidOnSuccess)
+          .catch(vkidOnError);
+      });
     
-          VKID.Config.init({
-            app: 52750377,
-            redirectUrl: 'https://stoocom.github.io/',
-            state: 'dj11fnsadjsd82',
-            codeChallenge: 'FGH767Gd65sdkjsaju32jdf243huifskdfh32fjJs73fhGgy3Dfgsd2',
-            responseMode: VKID.ConfigResponseMode.Callback,
-            source: VKID.ConfigSource.LOWCODE,
-            scope: 'friends'
-          });
+      function vkidOnSuccess(data) {
+        // Processing result
+      }
     
-          const oneTap = new VKID.OneTap();
-    
-          oneTap.render({
-            container: document.getElementById('vk_auth'),
-            showAlternativeLogin: true
-          })
-          .on(VKID.WidgetEvents.ERROR, vkidOnError)
-          .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload) {
-            const code = payload.code;
-            const deviceId = payload.device_id;
-    
-            VKID.Auth.exchangeCode(code, deviceId)
-              .then(vkidOnSuccess)
-              .catch(vkidOnError);
-          });
-        
-          function vkidOnSuccess(data) {
-            console.log('vkidOnSuccess', data)
-          }
-        
-          function vkidOnError(error) {
-            console.log('vkidOnError', error)
-            // Processing error
-          }
-        }
+      function vkidOnError(error) {
+        // Processing error
+      }
+    }
         });
         
       </script>
