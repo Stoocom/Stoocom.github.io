@@ -43,7 +43,7 @@
       const VKID = window.VKIDSDK;
 
       const codeVerifier = crypto
-      .randomBytes(CODE_VERIFIER_LENGTH)
+      .randomBytes(10)
       .toString('hex');
     const sha256 = crypto.createHash('sha256');
     const codeChallenge = sha256.update(codeVerifier).digest('base64url');
