@@ -37,7 +37,9 @@
     <div>
       <script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
       <script type="text/javascript">
-        if ('VKIDSDK' in window) {
+
+        document.addEventListener('DOMContentLoaded', function() { 
+          if ('VKIDSDK' in window) {
           const VKID = window.VKIDSDK;
     
           VKID.Config.init({
@@ -71,6 +73,8 @@
             // Processing error
           }
         }
+        });
+        
       </script>
     </div>
   </body>
