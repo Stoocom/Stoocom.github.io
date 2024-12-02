@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="./style.css">
-    <script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
+    <script src="https://api-maps.yandex.ru/v3/?apikey=c8214d76-a83c-48a0-ac30-18f3a3f2ccb0&lang=ru_RU"></script>
+    <script src="index.js"></script>
   </head>
   <body>
     <div class="container">
@@ -24,7 +25,7 @@
                 Каждый день миллионы игроков по всему миру вступают в командную битву 5 на 5
                 в роли одного из более чем сотни героев. Dota — глубочайшая многопользовательская стратегия всех времён,
                 в которой всегда найдётся место новой стратегии или тактике. Она совершенно бесплатна, и это не поменяется — начинайте защищать своего Древнего уже сейчас.
-                <div id="vk_auth"></div>
+                <div id="app" style="width: 600px; height: 400px"></div>
               </div>
               <div class="buttons_group">
                 <button class="button__link" onClick="window.open('https://www.dota2.com/', '_blank');" type="button"> Официальный сайт </button>
@@ -34,48 +35,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <script src="https://unpkg.com/@vkid/sdk@<3.0.0/dist-sdk/umd/index.js"></script>
-      <script type="text/javascript">
-        if ('VKIDSDK' in window) {
-          const VKID = window.VKIDSDK;
-    
-          VKID.Config.init({
-            app: 52750377,
-            redirectUrl: 'https://stoocom.github.io/',
-            responseMode: VKID.ConfigResponseMode.Callback,
-            source: VKID.ConfigSource.LOWCODE,
-            state: '12345am'
-          });
-    
-          const oneTap = new VKID.OneTap();
-    
-          oneTap.render({
-            container: document.getElementById('vk_auth'),
-            showAlternativeLogin: true
-          })
-          .on(VKID.WidgetEvents.ERROR, vkidOnError)
-          .on(VKID.OneTapInternalEvents.LOGIN_SUCCESS, function (payload) {
-            const code = payload.code;
-            const deviceId = payload.device_id;
-    
-            VKID.Auth.exchangeCode(code, deviceId)
-              .then(vkidOnSuccess)
-              .catch(vkidOnError);
-          });
-        
-          function vkidOnSuccess(data) {
-            console.log('vkidOnSuccess', data)
-            // Processing result
-          }
-        
-          function vkidOnError(error) {
-            console.log('error', error)
-            // Processing error
-          }
-        }
-      </script>
     </div>
   </body>
 </html>
