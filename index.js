@@ -1,8 +1,10 @@
+window.map = null;
+
 (async function initMap() {
     await ymaps3.ready;
 
     const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl} = ymaps3;
-    const {YMapZoomControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+    // const {YMapZoomControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
     const map = new YMap(
         document.getElementById('app'),
