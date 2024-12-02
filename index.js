@@ -27,7 +27,7 @@ window.map = null;
 
     const scaleControl = new YMapScaleControl({});
     const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
-    controls.addChild(new YMapGeolocationControl());
+    // controls.addChild(new YMapGeolocationControl());
 
     map.addChild(controls);
 
