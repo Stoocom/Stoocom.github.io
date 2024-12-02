@@ -3,10 +3,10 @@ window.map = null;
 (async function initMap() {
     await ymaps3.ready;
 
-    // await ymaps3.import.registerCdn(
-    //     'https://cdn.jsdelivr.net/npm/{package}',
-    //     '@yandex/ymaps3-default-ui-theme@latest'
-    //   );
+    await ymaps3.import.registerCdn(
+        'https://cdn.jsdelivr.net/npm/{package}',
+        '@yandex/ymaps3-default-ui-theme@latest'
+      );
 
     //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
 
