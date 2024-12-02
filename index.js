@@ -3,8 +3,15 @@ window.map = null;
 (async function initMap() {
     await ymaps3.ready;
 
+    await ymaps3.import.registerCdn(
+        'https://cdn.jsdelivr.net/npm/{package}',
+        '@yandex/ymaps3-default-ui-theme@latest'
+      );
+
+    //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
+
     const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl} = ymaps3;
-    // const {YMapZoomControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+    const {YMapZoomControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
     const map = new YMap(
         document.getElementById('app'),
