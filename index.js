@@ -1,7 +1,7 @@
 (async function initMap() {
     await ymaps3.ready;
 
-    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl} = ymaps3;
+    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapZoomControl} = ymaps3;
 
     const map = new YMap(
         document.getElementById('app'),
@@ -20,5 +20,6 @@
     const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
 
     map.addChild(controls);
+    map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
     map.addChild(new YMapDefaultSchemeLayer());
 })()
