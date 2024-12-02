@@ -9,7 +9,8 @@
             location: {
                 center: [37.588144, 55.733842],
                 zoom: 10
-            }
+            },
+            mode: 'vector'
         }
     );
 
