@@ -10,8 +10,8 @@ window.map = null;
 
     //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
 
-    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapGeolocationControl} = ymaps3;
-    const {YMapZoomControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl} = ymaps3;
+    const {YMapZoomControl, YMapGeolocationControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
     const map = new YMap(
         document.getElementById('app'),
