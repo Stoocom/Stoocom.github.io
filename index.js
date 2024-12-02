@@ -25,10 +25,10 @@ window.map = null;
         [new YMapDefaultSchemeLayer({})]
     );
 
-    // const scaleControl = new YMapScaleControl({});
-    // const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
+    const scaleControl = new YMapScaleControl({});
+    const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
 
-    // map.addChild(controls);
+    map.addChild(controls);
     // map.addChild(new YMapDefaultSchemeLayer());
     map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
 
