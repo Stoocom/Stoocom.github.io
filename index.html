@@ -42,18 +42,11 @@
           if ('VKIDSDK' in window) {
       const VKID = window.VKIDSDK;
 
-      const codeVerifier = crypto
-      .randomBytes(10)
-      .toString('hex');
-    const sha256 = crypto.createHash('sha256');
-    const codeChallenge = sha256.update(codeVerifier).digest('base64url');
-
       VKID.Config.init({
         app: 52750377,
         redirectUrl: 'https://stoocom.github.io/',
         responseMode: VKID.ConfigResponseMode.Callback,
         source: VKID.ConfigSource.LOWCODE,
-        codeVerifier: codeVerifier
       });
 
       const oAuth = new VKID.OAuthList();
