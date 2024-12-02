@@ -10,8 +10,9 @@ window.map = null;
 
     //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
 
-    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl} = ymaps3;
+    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapMarker} = ymaps3;
     const {YMapZoomControl, YMapGeolocationControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
+    const {YMapClusterer, clusterByGrid} = await ymaps3.import('@yandex/ymaps3-clusterer');
 
     const map = new YMap(
         document.getElementById('app'),
@@ -45,7 +46,41 @@ window.map = null;
         properties: {name: 'Point of issue of orders'}
       }));
 
-      console.log('points', points)
+      const contentPin = document.createElement('div');
+      contentPin.innerHTML = '<img style="width:20px;" src="https://www.freepnglogos.com/uploads/pin-png/pin-transparent-png-pictures-icons-and-png-backgrounds-36.png" />';
+
+      const marker = (feature) => {
+        return new ymaps3.YMapMarker(
+            {
+            coordinates: feature.geometry.coordinates,
+            source: 'my-source'
+            },
+            contentPin.cloneNode(true)
+        )
+      };
+
+    const cluster = (coordinates, features) => {
+        return new ymaps3.YMapMarker(
+            {
+            coordinates,
+            source: 'my-source'
+            },
+            circle(features.length).cloneNode(true)
+        );
+    }
+
+    function circle(count) {
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        circle.innerHTML = `
+                <div class="circle-content">
+                    <span class="circle-text">${count}</span>
+                </div>
+            `;
+        return circle;
+    }
+    
+    console.log('points', points)
 
     const scaleControl = new YMapScaleControl({});
     const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
@@ -58,5 +93,14 @@ window.map = null;
 
     // map.addChild(new YMapDefaultSchemeLayer());
     map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
+
+    const clusterer = new YMapClusterer({
+        method: clusterByGrid({gridSize: 64}),
+        features: points,
+        marker,
+        cluster
+    });
+
+    map.addChild(clusterer);
 
 })()
