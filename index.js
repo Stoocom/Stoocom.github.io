@@ -15,7 +15,7 @@ window.map = null;
 
     //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
 
-    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapMarker} = ymaps3;
+    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapMarker, YMapLayer, YMapFeatureDataSource} = ymaps3;
     const {YMapZoomControl, YMapGeolocationControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
     const {YMapClusterer, clusterByGrid} = await ymaps3.import('@yandex/ymaps3-clusterer');
 
@@ -50,6 +50,11 @@ window.map = null;
         geometry: {coordinates: lnglat},
         properties: {name: 'Point of issue of orders'}
       }));
+
+      map
+        // .addChild(new YMapDefaultSchemeLayer())
+        .addChild(new YMapFeatureDataSource({id: 'my-source'}))
+        .addChild(new YMapLayer({source: 'my-source', type: 'markers', zIndex: 1800}));
 
       const contentPin = document.createElement('div');
       contentPin.innerHTML = '<img style="width:20px;" src="https://www.freepnglogos.com/uploads/pin-png/pin-transparent-png-pictures-icons-and-png-backgrounds-36.png" />';
