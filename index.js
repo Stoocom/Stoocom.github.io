@@ -21,6 +21,6 @@
 
     // map.addChild(controls);
     // map.addChild(new YMapDefaultSchemeLayer());
-    map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
+    // map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
 
 })()
