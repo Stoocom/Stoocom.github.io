@@ -37,10 +37,11 @@
     </div>
     <div>
       <script type="text/javascript">
+        import * as VKID from '@vkid/sdk';
 
         document.addEventListener('DOMContentLoaded', function() { 
-          if ('VKIDSDK' in window) {
-      const VKID = window.VKIDSDK;
+      //     if ('VKIDSDK' in window) {
+      // const VKID = window.VKIDSDK;
 
       VKID.Config.init({
         app: 52750377,
@@ -75,7 +76,7 @@
         // Processing error
       }
     }
-        });
+      );
         
       </script>
     </div>
