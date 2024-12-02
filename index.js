@@ -8,6 +8,11 @@ window.map = null;
         '@yandex/ymaps3-default-ui-theme@latest'
       );
 
+      await ymaps3.import.registerCdn(
+        'https://cdn.jsdelivr.net/npm/{package}',
+        '@yandex/ymaps3-clusterer@latest'
+      );
+
     //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
 
     const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapMarker} = ymaps3;
