@@ -27,9 +27,12 @@ window.map = null;
 
     const scaleControl = new YMapScaleControl({});
     const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
+    const controls_geo = new YMapControls();
+    controls_geo.addChild(new YMapGeolocationControl());
     // controls.addChild(new YMapGeolocationControl());
 
     map.addChild(controls);
+    map.addChild(controls_geo);
 
     // map.addChild(new YMapDefaultSchemeLayer());
     map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
