@@ -20,7 +20,7 @@
     // const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
 
     // map.addChild(controls);
-    map.addChild(new YMapDefaultSchemeLayer());
+    // map.addChild(new YMapDefaultSchemeLayer());
     map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
 
 })()
