@@ -10,7 +10,7 @@ window.map = null;
 
     //   const {YMapDefaultMarker} = await import('@yandex/ymaps3-default-ui-theme');
 
-    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl} = ymaps3;
+    const {YMap, YMapDefaultSchemeLayer, YMapControls, YMapScaleControl, YMapGeolocationControl} = ymaps3;
     const {YMapZoomControl} = await ymaps3.import('@yandex/ymaps3-default-ui-theme');
 
     const map = new YMap(
@@ -27,8 +27,10 @@ window.map = null;
 
     const scaleControl = new YMapScaleControl({});
     const controls = new YMapControls({position: 'bottom left'}, [scaleControl]);
+    controls.addChild(new YMapGeolocationControl());
 
     map.addChild(controls);
+
     // map.addChild(new YMapDefaultSchemeLayer());
     map.addChild(new YMapControls({position: 'right'}).addChild(new YMapZoomControl({})));
 
