@@ -93,6 +93,8 @@ window.map = null;
       };
 
     const cluster = (coordinates, features) => {
+        console.log('cluster coordinates', coordinates.length, coordinates)
+        console.log('cluster features', features.length, features)
         return new ymaps3.YMapMarker(
             {
             coordinates,
