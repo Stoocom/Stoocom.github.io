@@ -59,6 +59,28 @@ window.map = null;
       const contentPin = document.createElement('div');
       contentPin.innerHTML = '<img style="width:20px;" src="https://www.freepnglogos.com/uploads/pin-png/pin-transparent-png-pictures-icons-and-png-backgrounds-36.png" />';
 
+      function getBounds(coordinates) {
+        let minLat = Infinity,
+          minLng = Infinity;
+        let maxLat = -Infinity,
+          maxLng = -Infinity;
+      
+        for (const coords of coordinates) {
+          const lat = coords[1];
+          const lng = coords[0];
+      
+          if (lat < minLat) minLat = lat;
+          if (lat > maxLat) maxLat = lat;
+          if (lng < minLng) minLng = lng;
+          if (lng > maxLng) maxLng = lng;
+        }
+      
+        return [
+          [minLng, minLat],
+          [maxLng, maxLat]
+        ];
+      }
+
       const marker = (feature) => {
         return new ymaps3.YMapMarker(
             {
@@ -73,7 +95,12 @@ window.map = null;
         return new ymaps3.YMapMarker(
             {
             coordinates,
-            source: 'my-source'
+            source: 'my-source',
+            onClick() {
+                const bounds = getBounds(features.map((feature) => feature.geometry.coordinates));
+                console.log('onClick bounds', bounds)
+                map.update({location: {...bounds}});
+            }
             },
             circle(features.length).cloneNode(true)
         );
