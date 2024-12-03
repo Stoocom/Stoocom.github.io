@@ -99,7 +99,7 @@ window.map = null;
             onClick() {
                 const bounds = getBounds(features.map((feature) => feature.geometry.coordinates));
                 console.log('onClick bounds', bounds)
-                map.update({location: {bounds, easing: 'ease-in-out', duration: 2000}});
+                map.update({location: {bounds, easing: 'ease-in-out', duration: 1000}});
             }
             },
             circle(features.length).cloneNode(true)
