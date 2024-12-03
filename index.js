@@ -25,7 +25,7 @@ window.map = null;
             showScaleInCopyrights: true,
             location: {
                 center: [37.588144, 55.733842],
-                zoom: 10,
+                zoom: 9,
                 margin: [100, 100, 100, 100]
             }
         },
