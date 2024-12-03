@@ -77,8 +77,8 @@ window.map = null;
         }
       
         return [
-          [minLng, minLat],
-          [maxLng, maxLat]
+          [minLng*0.9, minLat*0.9],
+          [maxLng*1.1, maxLat*1.1]
         ];
       }
 
