@@ -32,8 +32,8 @@ window.map = null;
     );
 
     const coordinates = [
-        [37.64, 55.76],
-        [37.63, 55.7],
+        [37.64, 56.76],
+        [37.63, 56.7],
         [37.43, 55.69],
         [37.47, 55.68],
         [38.53, 58.6],
@@ -99,7 +99,7 @@ window.map = null;
             onClick() {
                 const bounds = getBounds(features.map((feature) => feature.geometry.coordinates));
                 console.log('onClick bounds', bounds)
-                map.update({location: {...bounds}});
+                map.update({location: {...bounds, easing: 'ease-in-out', duration: 2000}});
             }
             },
             circle(features.length).cloneNode(true)
